@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ShoppingCartService } from './shopping-cart.service';
+import { DeliveryOptionsService } from './delivery-options.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -11,8 +12,9 @@ export class ShoppingCartComponent implements OnInit {
 
   products;
   totalPrice = 0;
+  deliveryOptions = [];
   private subscription: Subscription;
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private shoppingCartService: ShoppingCartService, private deliveryOptionsService: DeliveryOptionsService) { }
 
   ngOnInit() {
     this.products = this.shoppingCartService.getProducts();
@@ -24,6 +26,7 @@ export class ShoppingCartComponent implements OnInit {
         this.products = data[0];
         this.totalPrice = data[1];
       } );
+      this.deliveryOptions = this.deliveryOptionsService.getDeliveryOptions();
       // this.subscription = this.shoppingCartService.newPrice.subscribe(
       //   (price) => this.totalPrice = price );
   
@@ -36,6 +39,10 @@ export class ShoppingCartComponent implements OnInit {
 
   onAdd(product) {
     this.shoppingCartService.addProduct(product);
+  }
+
+  setDeliveryOption(option) {
+    this.shoppingCartService.setDeliveryPrice(option);
   }
 
 }

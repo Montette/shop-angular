@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../shared/product.model';
 import { Subject } from 'rxjs';
+import { DeliveryOptionsService } from './delivery-options.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,10 @@ export class ShoppingCartService {
 
   private products = [];
   newProduct = new Subject();
-  newPrice = new Subject();
+  // newPrice = new Subject();
+  deliveryPrice = 5;
   totalPrice = 0;
-    constructor() { }
+    constructor(private deliveryService: DeliveryOptionsService) { }
   
    getProducts() {
     return this.products;
@@ -28,7 +30,7 @@ export class ShoppingCartService {
     }
     // this.products.push(product);
     this.calculatePrice();
-    this.newProduct.next([this.products, this.totalPrice]);
+    // this.newProduct.next([this.products, this.totalPrice]);
    }
 
    removeProduct(product) {
@@ -39,13 +41,21 @@ export class ShoppingCartService {
       this.products[index].amount -= 1;
     }
     this.calculatePrice();
-     this.newProduct.next([this.products, this.totalPrice]);
+    //  this.newProduct.next([this.products, this.totalPrice]);
+   }
+
+   setDeliveryPrice(option) {
+     
+    this.deliveryPrice = this.deliveryService.getDeliveryOptions().filter(opt => opt.name === option.name)[0].price;
+    console.log(this.deliveryPrice);
+    this.calculatePrice();
    }
 
    calculatePrice() {
      this.totalPrice = this.products.reduce((a, b) => {
        return a + b.price * b.amount;
-     }, 0 );
+     }, 0 ) + this.deliveryPrice;
+     this.newProduct.next([this.products, this.totalPrice]);
     //  this.newPrice.next(this.totalPrice);
      
    }

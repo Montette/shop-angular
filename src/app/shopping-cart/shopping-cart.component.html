@@ -1,10 +1,28 @@
-<div *ngIf="products.length > 0, else noProducts">
+<div *ngIf="products.length > 0, else noProducts" class="row">
+  <div class="col-sm-5 col-md-6">
 <div *ngFor="let product of products">
   <p> Product name: {{product.name}} Product price: {{product.price}}$  amount: {{product.amount}}</p>
   <button (click)="onAdd(product)">Add</button>
   <button (click)="onRemove(product)">Remove</button>
 </div>
-<p>Total Price: {{totalPrice}}</p>
+</div>
+<div class="col-sm-5 col-md-6">
+
+  <h4>Choose delivery option</h4>
+    <div *ngFor="let option of deliveryOptions"class="form-check">
+        <input class="form-check-input" type="radio" name="delivery_option" id="{{option.name}}" [checked]="option.name === 'Standard delivery'" (click)="setDeliveryOption(option)">
+        <label class="form-check-label" for="{{option.name}}">
+          <span>{{option.name}}</span><span class="delivery-price">{{option.price}}</span>
+          <span class="delivery-description">{{option.description}}</span>
+        </label>
+    </div>
+      
+</div>
+<div class="col-12">
+<p class="text-center">Total Price: {{totalPrice}}</p>
+</div>
+
+
 </div>
 <ng-template #noProducts>
   <p>No products in the shopping cart</p>
