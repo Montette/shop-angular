@@ -15,6 +15,7 @@ import { DataStorageService } from './shared/data-storage.service';
 import { FilterPipe } from './products-list/filter.pipe';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { SortPipe } from './shared/sort.pipe';
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SortPipe } from './shared/sort.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StorageServiceModule
   ],
   providers: [ProductsServiceService, DataStorageService],
   bootstrap: [AppComponent]

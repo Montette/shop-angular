@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from './shared/data-storage.service';
+import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,9 @@ import { DataStorageService } from './shared/data-storage.service';
 export class AppComponent implements OnInit{
   title = 'angular-shop';
 
-  constructor(private dataStorage: DataStorageService) { }
+  constructor(private dataStorage: DataStorageService, private shoppingCartService: ShoppingCartService) { }
   ngOnInit() {
     this.dataStorage.fetchProducts();
+    this.shoppingCartService.loadFromLocalStorage();
   }
 }
