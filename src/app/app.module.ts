@@ -10,6 +10,11 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductItemComponent } from './products-list/product-item/product-item.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProductsServiceService } from './shared/products-service.service';
+import { DataStorageService } from './shared/data-storage.service';
+import { FilterPipe } from './products-list/filter.pipe';
+import { DropdownDirective } from './shared/dropdown.directive';
+import { SortPipe } from './shared/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ProductsListComponent,
     ProductItemComponent,
     ShoppingCartComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FilterPipe,
+    DropdownDirective,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ProductsServiceService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

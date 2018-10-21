@@ -1,0 +1,18 @@
+p {
+    font-size:12px;
+}
+
+.product-item {
+    margin: 30px 0;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.price {
+    margin: 0;
+    font-size: 20px;
+}

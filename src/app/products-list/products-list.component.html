@@ -1,3 +1,27 @@
-<p>
-  products-list works!
-</p>
+<div *ngIf="products.length > 0, else loading" class="container">
+    <!-- <form class="form-inline my-2 my-lg-0"> -->
+      <div class="row justify-content-center">
+        <div class="col-4">
+        <input [(ngModel)]="filteredStatus" class="form-control" type="search" placeholder="Search product..." aria-label="Search">
+      </div>
+      <div class="col-4">
+          <div class="dropdown" appDropdown>
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter products
+              </button>
+              <div class="dropdown-menu" appDropdown aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" (click)="sortItems('name')">By name</a>
+                <a class="dropdown-item" (click)="sortItems('price')">By price</a>
+              </div>
+            </div>
+      </div>
+      </div>
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+  <div class="row justify-content-around products-list">
+  <app-product-item *ngFor="let item of products | filter:filteredStatus:'name' | sort:property:order" [item]="item"></app-product-item>
+  </div>
+</div>
+<ng-template #loading>
+    <p> Loading...</p>
+    </ng-template>

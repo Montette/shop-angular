@@ -1,3 +1,15 @@
-<p>
-  product-item works!
-</p>
+<div class="col-12 col-sm-6 col-md-8 product-item">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{item.imgUrl}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <p class="card-text">{{item.description}}</p>
+        </div>
+          <div class="card-footer">
+            <p class="price">Price: {{item.price}}$</p>
+              <a href="#" class="btn btn-primary">Buy</a>
+          </div>
+          
+       
+      </div>
+</div>
