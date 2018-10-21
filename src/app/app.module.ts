@@ -16,6 +16,8 @@ import { FilterPipe } from './products-list/filter.pipe';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { SortPipe } from './shared/sort.pipe';
 import { StorageServiceModule } from 'angular-webstorage-service';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { OrderInfoComponent } from './order-info/order-info.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { StorageServiceModule } from 'angular-webstorage-service';
     NotFoundComponent,
     FilterPipe,
     DropdownDirective,
-    SortPipe
+    SortPipe,
+    OrderHistoryComponent,
+    OrderInfoComponent
   ],
   imports: [
     BrowserModule,

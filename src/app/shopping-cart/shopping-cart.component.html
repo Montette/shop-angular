@@ -1,29 +1,40 @@
-<div *ngIf="products.length > 0, else noProducts" class="row">
-  <div class="col-sm-5 col-md-6">
-<div *ngFor="let product of products">
-  <p> Product name: {{product.name}} Product price: {{product.price}}$  amount: {{product.amount}}</p>
-  <button (click)="onAdd(product)">Add</button>
-  <button (click)="onRemove(product)">Remove</button>
-</div>
-</div>
-<div class="col-sm-5 col-md-6">
-
-  <h4>Choose delivery option</h4>
-    <div *ngFor="let option of deliveryOptions"class="form-check">
-        <input class="form-check-input" type="radio" name="delivery_option" id="{{option.name}}" [checked]="option.name === 'Standard delivery'" (click)="setDeliveryOption(option)">
+<div class="cart-container container">
+  <h2 class="text-center">Shopping cart</h2>
+  <div *ngIf="products.length > 0, else noProducts" class="row">
+    <div class="col-sm-5 col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let product of products">
+          <p>
+            <span class="product-prop"> Product name: </span>{{product.name}}</p>
+          <p>
+            <span class="product-prop"> Product price: </span> {{product.price | currency:'USD':symbol}}</p>
+          <p>
+            <span class="product-prop"> Product amount: </span> {{product.amount}}</p>
+          <button class=" btn btn-info btn-sm amount-button" (click)="onAdd(product)">+</button>
+          <button class="btn btn-info btn-sm amount-button" (click)="onRemove(product)">-</button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-5 col-md-6">
+      <h3>Choose delivery option</h3>
+      <div *ngFor="let option of deliveryOptions" class="form-check">
+        <input class="form-check-input" type="radio" name="delivery_option" id="{{option.name}}" [checked]="option.name === 'Standard delivery'"
+          (click)="setDeliveryOption(option)">
         <label class="form-check-label" for="{{option.name}}">
-          <span>{{option.name}}</span><span class="delivery-price">{{option.price}}</span>
+          <span>{{option.name}}</span> -
+          <span class="delivery-price">{{option.price | currency:'USD':symbol}}</span>
           <span class="delivery-description">{{option.description}}</span>
         </label>
+      </div>
     </div>
-      
+    <div class="col-12">
+      <p class="text-center price-info">Total Price: {{totalPrice | currency:'USD':symbol}}</p>
+    </div>
+    <div class="col-12 text-center">
+      <button class="btn btn-primary btn-lg" (click)="submitOrder()">Submit</button>
+    </div>
+  </div>
+  <ng-template #noProducts>
+    <p class="information text-center">No products in the shopping cart</p>
+  </ng-template>
 </div>
-<div class="col-12">
-<p class="text-center">Total Price: {{totalPrice}}</p>
-</div>
-
-
-</div>
-<ng-template #noProducts>
-  <p>No products in the shopping cart</p>
-</ng-template>

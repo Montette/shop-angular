@@ -4,6 +4,8 @@ import { Subject } from 'rxjs';
 import { DeliveryOptionsService } from './delivery-options.service';
 import { LocalStorageService } from '../shared/local-storage.service';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -41,6 +43,10 @@ export class ShoppingCartService {
     this.calculatePrice();
    }
 
+   removeAll() {
+     this.products.length = 0;
+   }
+
    setDeliveryPrice(option) {
     this.deliveryPrice = this.deliveryService.getDeliveryOptions().filter(opt => opt.name === option.name)[0].price;
     this.calculatePrice();
@@ -58,4 +64,6 @@ export class ShoppingCartService {
     this.products = this.localStorageService.getFromLocalStorage();
     this.calculatePrice();
    }
+
+
 }

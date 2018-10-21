@@ -12,7 +12,6 @@ export class ProductsServiceService {
   constructor() { }
 
   setProducts(data: Product[]) {
-    console.log(data);
     this.products = data;
     this.productsLoaded.next(this.products.slice());
   }

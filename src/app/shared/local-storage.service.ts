@@ -16,4 +16,8 @@ export class LocalStorageService {
   getFromLocalStorage() {
     return this.storage.get(STORAGE_KEY) || [];
   }
+
+  removeFromLocalStorage() {
+    this.storage.remove(STORAGE_KEY);
+  }
 }

@@ -20,20 +20,10 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   constructor(private dataStorage: DataStorageService, private productsService: ProductsServiceService) { }
 
   ngOnInit() {
-    // this.dataStorage.fetchProducts()
-    // .subscribe(
-    //   (products: any[]) => {
-    //    console.log(products);
-    //     this.products = products;
-    //   },
-    //   (error) => console.log(error)
-    // );
-    // this.dataStorage.fetchProducts();
     this.subscription = this.productsService.productsLoaded
       .subscribe(
         (products: Product[]) => {
           this.products = products;
-          console.log(this.products);
         }
       );
       this.products = this.productsService.getProducts();

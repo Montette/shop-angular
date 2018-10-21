@@ -6,10 +6,8 @@
           <p class="card-text">{{item.description}}</p>
         </div>
           <div class="card-footer">
-            <p class="price">Price: {{item.price}}$</p>
+            <p class="price">Price: {{item.price | currency:'USD':symbol}}</p>
               <button class="btn btn-primary" (click)="addToCart()">Buy</button>
-          </div>
-          
-       
+          </div> 
       </div>
 </div>
