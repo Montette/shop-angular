@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderHistoryService } from './order-history.service';
+import { OrderHistoryService } from '../services/order-history.service';
 import { Response } from '@angular/http';
 import {Subject} from 'rxjs';
 @Component({

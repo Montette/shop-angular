@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from './shared/data-storage.service';
-import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
+import { DataStorageService } from './services/data-storage.service';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 @Component({
   selector: 'app-root',

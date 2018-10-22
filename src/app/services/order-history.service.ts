@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
+import { ShoppingCartService } from './shopping-cart.service';
 import * as moment from 'moment';
 
 

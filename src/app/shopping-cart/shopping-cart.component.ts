@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ShoppingCartService } from './shopping-cart.service';
-import { DeliveryOptionsService } from './delivery-options.service';
-import { OrderHistoryService } from '../order-history/order-history.service';
-import { LocalStorageService } from '../shared/local-storage.service';
+import { ShoppingCartService } from '../services/shopping-cart.service';
+import { DeliveryOptionsService } from '../services/delivery-options.service';
+import { OrderHistoryService } from '../services/order-history.service';
+import { LocalStorageService } from '../services/local-storage.service';
 import { Router } from '@angular/router';
 
 @Component({
